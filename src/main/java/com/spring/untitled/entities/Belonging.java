@@ -10,25 +10,17 @@ import java.util.Objects;
 @Table(name = "tb_belonging")
 public class Belonging {
 
-    private Integer position;
-
     @EmbeddedId
     private BelongingPK id = new BelongingPK();
+
+    private Integer position;
 
     public Belonging() {
     }
 
-    public Belonging(Integer position, Game game, GameList list) {
-        this.position = position;
+    public Belonging(Game game, GameList list, Integer position) {
         id.setGame(game);
         id.setGameList(list);
-    }
-
-    public Integer getPosition() {
-        return position;
-    }
-
-    public void setPosition(Integer position) {
         this.position = position;
     }
 
@@ -38,6 +30,14 @@ public class Belonging {
 
     public void setId(BelongingPK id) {
         this.id = id;
+    }
+
+    public Integer getPosition() {
+        return position;
+    }
+
+    public void setPosition(Integer position) {
+        this.position = position;
     }
 
     @Override
